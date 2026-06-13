@@ -2,9 +2,7 @@
 
 ## 1. Descripción general
 
-Este documento define la arquitectura de la capa de base de datos 
-del proyecto Smart Home, un sistema inteligente de monitoreo y 
-control de consumo de energía eléctrica en hogares colombianos.
+Este documento define la arquitectura de la capa de base de datos del proyecto Smart Home, un sistema inteligente de monitoreo y control de consumo de energía eléctrica en hogares colombianos.
 
 ---
 
@@ -55,7 +53,9 @@ control de consumo de energía eléctrica en hogares colombianos.
 |---|---|
 | `user` | Usuarios del sistema |
 | `role` | Roles disponibles |
+| `permission` | Permisos del sistema |
 | `user_role` | Asignación de roles a usuarios |
+| `role_permission` | Asignación de permisos a roles |
 | `session` | Sesiones activas |
 | `mfa` | Autenticación multifactor |
 | `recovery_token` | Tokens de recuperación de contraseña |
@@ -73,17 +73,18 @@ control de consumo de energía eléctrica en hogares colombianos.
 | Entidad | Descripción |
 |---|---|
 | `device` | Dispositivos registrados |
+| `type_device` | Tipos de dispositivos disponibles |
 | `smart_device` | Especialización dispositivos inteligentes |
 | `manual_device` | Especialización dispositivos manuales |
 | `schedule` | Horarios automáticos de dispositivos |
 | `threshold_rule` | Reglas de umbral de consumo |
 | `device_status_history` | Historial de estados de dispositivos |
+| `voice_assistant_token` | Tokens de integración con asistentes de voz |
 
 ### `consumption`
 | Entidad | Descripción |
 |---|---|
 | `consumption` | Lecturas de consumo en tiempo real |
-| `consumption_daily` | Agregados diarios de consumo |
 | `consumption_metric` | Métricas para gráficos y reportes |
 | `recommendation` | Recomendaciones de ahorro |
 
@@ -91,8 +92,8 @@ control de consumo de energía eléctrica en hogares colombianos.
 | Entidad | Descripción |
 |---|---|
 | `notification` | Notificaciones generales del sistema |
-| `alert_notification` | Especialización notificaciones de alerta |
-| `reminder_notification` | Especialización notificaciones de recordatorio |
+| `alert` | Alertas generadas por reglas de umbral |
+| `reminder_notification` | Notificaciones de recordatorio |
 
 ### `sync`
 | Entidad | Descripción |
