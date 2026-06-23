@@ -97,8 +97,8 @@ try {
     # 4. Ejecutar migraciones de Liquibase
     # --------------------------------------------------------
     Write-Host ""
-    Write-Host "Ejecutando migraciones de Liquibase (changelog-master.yaml) excluyendo scripts de referencia..." -ForegroundColor Cyan
-    docker compose run --rm liquibase update --contexts='!reference'
+    Write-Host "Ejecutando migraciones de Liquibase (changelog-master.yaml) excluyendo scripts de referencia y datos de prueba..." -ForegroundColor Cyan
+    docker compose run --rm liquibase update --context-filter='!reference and !test-data'
 
     if ($LASTEXITCODE -ne 0) {
         Write-Error "La ejecucion de Liquibase fallo. Revisa el log arriba."

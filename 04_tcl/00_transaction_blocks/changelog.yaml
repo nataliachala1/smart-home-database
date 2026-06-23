@@ -27,6 +27,7 @@ databaseChangeLog:
       id: tcl-tx-001-registro-usuario
       author: smarthome-team
       comment: "[REFERENCIA] Bloque transaccional de registro de usuario (RF1.1)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -39,6 +40,7 @@ databaseChangeLog:
       id: tcl-tx-002-registro-hogar
       author: smarthome-team
       comment: "[REFERENCIA] Bloque transaccional de registro de hogar (RF2.1)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -51,6 +53,7 @@ databaseChangeLog:
       id: tcl-tx-003-registro-dispositivo
       author: smarthome-team
       comment: "[REFERENCIA] Bloque transaccional de registro de dispositivo (RF3.1)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -63,6 +66,7 @@ databaseChangeLog:
       id: tcl-tx-004-desactivar-hogar
       author: smarthome-team
       comment: "[REFERENCIA] Bloque transaccional de desactivación de hogar (RF2.4)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -75,6 +79,7 @@ databaseChangeLog:
       id: tcl-tx-005-desactivar-dispositivo
       author: smarthome-team
       comment: "[REFERENCIA] Bloque transaccional de desactivación de dispositivo (RF3.4)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -87,6 +92,7 @@ databaseChangeLog:
       id: tcl-tx-006-restaurar-backup
       author: smarthome-team
       comment: "[REFERENCIA] Bloque transaccional de restauración de backup (RF5.3)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -99,6 +105,7 @@ databaseChangeLog:
       id: tcl-tx-007-sincronizacion-offline
       author: smarthome-team
       comment: "[REFERENCIA] Bloque transaccional de sincronización de cola offline (RF5.4)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:

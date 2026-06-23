@@ -53,6 +53,7 @@ databaseChangeLog:
       id: dml-del-003-soft-delete-dispositivo
       author: smarthome-team
       comment: "[REFERENCIA] Eliminación lógica de dispositivo, horarios y umbrales (RF3.4)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:

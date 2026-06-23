@@ -24,6 +24,7 @@ databaseChangeLog:
       id: tcl-rec-001-usuario-bloqueado
       author: smarthome-team
       comment: "[REFERENCIA] Recuperación manual de usuario bloqueado (RF1.6)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -36,6 +37,7 @@ databaseChangeLog:
       id: tcl-rec-002-hogar-desactivado
       author: smarthome-team
       comment: "[REFERENCIA] Recuperación manual de hogar desactivado por error (RF2.4)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -48,6 +50,7 @@ databaseChangeLog:
       id: tcl-rec-003-dispositivo-desactivado
       author: smarthome-team
       comment: "[REFERENCIA] Recuperación manual de dispositivo desactivado por error (RF3.4)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -60,6 +63,7 @@ databaseChangeLog:
       id: tcl-rec-004-restauracion-fallida
       author: smarthome-team
       comment: "[REFERENCIA] Recuperación manual ante restauración de backup fallida (RF5.3)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:

@@ -30,9 +30,6 @@ DECLARE
   v_entidad        VARCHAR(50);
 BEGIN
 
-  -- --------------------------------------------------------
-  -- Determinar la acción realizada
-  -- --------------------------------------------------------
   IF TG_OP = 'INSERT' THEN
     v_accion       := 'crear';
     v_datos_ant    := NULL;
@@ -40,8 +37,10 @@ BEGIN
     v_id_entidad   := (to_jsonb(NEW)->>'id_' || TG_TABLE_NAME)::UUID;
 
   ELSIF TG_OP = 'UPDATE' THEN
-    -- Distinguir entre soft delete y edición normal
-    IF OLD.deleted_at IS NULL AND NEW.deleted_at IS NOT NULL THEN
+    -- Verificar si la tabla tiene deleted_at antes de accederlo
+    IF (to_jsonb(OLD) ? 'deleted_at')
+       AND (to_jsonb(OLD)->>'deleted_at') IS NULL
+       AND (to_jsonb(NEW)->>'deleted_at') IS NOT NULL THEN
       v_accion := 'eliminar';
     ELSE
       v_accion := 'editar';
@@ -58,10 +57,6 @@ BEGIN
 
   END IF;
 
-  -- --------------------------------------------------------
-  -- Intentar obtener el id_user del registro afectado
-  -- Si la tabla no tiene id_user se maneja el error
-  -- --------------------------------------------------------
   BEGIN
     IF TG_OP = 'DELETE' THEN
       v_id_user := (to_jsonb(OLD)->>'id_user')::UUID;
@@ -72,14 +67,8 @@ BEGIN
     v_id_user := NULL;
   END;
 
-  -- --------------------------------------------------------
-  -- Nombre de la entidad: esquema.tabla
-  -- --------------------------------------------------------
   v_entidad := TG_TABLE_SCHEMA || '.' || TG_TABLE_NAME;
 
-  -- --------------------------------------------------------
-  -- Ofuscar campos sensibles antes de guardar en el log
-  -- --------------------------------------------------------
   IF v_datos_ant IS NOT NULL THEN
     v_datos_ant := v_datos_ant
       - 'password_hash'
@@ -100,9 +89,6 @@ BEGIN
       - 'ultimo_codigo_hash';
   END IF;
 
-  -- --------------------------------------------------------
-  -- Insertar registro en audit.audit_log
-  -- --------------------------------------------------------
   INSERT INTO audit.audit_log (
     id_audit_log,
     id_user,
@@ -128,9 +114,6 @@ BEGIN
     NOW()
   );
 
-  -- --------------------------------------------------------
-  -- Retornar según la operación
-  -- --------------------------------------------------------
   IF TG_OP = 'DELETE' THEN
     RETURN OLD;
   END IF;

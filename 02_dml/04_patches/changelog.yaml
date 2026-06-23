@@ -27,6 +27,7 @@ databaseChangeLog:
       id: dml-patch-001-reset-intentos-fallidos
       author: smarthome-team
       comment: "[JOB] Resetea intentos fallidos y desbloquea cuentas cuyo tiempo de bloqueo expiró"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -39,6 +40,7 @@ databaseChangeLog:
       id: dml-patch-002-invalidar-tokens-expirados
       author: smarthome-team
       comment: "[JOB] Marca como inactivas las sesiones cuyo token ya expiró (RNF5.4)"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -51,6 +53,7 @@ databaseChangeLog:
       id: dml-patch-003-purgar-blacklist
       author: smarthome-team
       comment: "[JOB] Elimina físicamente tokens revocados ya expirados"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
@@ -63,6 +66,7 @@ databaseChangeLog:
       id: dml-patch-004-recovery-tokens-expirados
       author: smarthome-team
       comment: "[JOB] Marca como usados los tokens de recuperación expirados sin usar"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:

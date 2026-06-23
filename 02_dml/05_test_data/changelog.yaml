@@ -28,7 +28,20 @@ databaseChangeLog:
             stripComments: true
 
   - changeSet:
-      id: dml-test-data-002-dispositivos
+      id: dml-test-data-002-homes
+      author: smarthome-team
+      comment: "[TEST-DATA] Inserta hogares de prueba"
+      context: test-data
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 002_test_homes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-test-data-003-dispositivos
       author: smarthome-team
       comment: "[TEST-DATA] Inserta dispositivos de prueba"
       context: test-data
@@ -36,6 +49,45 @@ databaseChangeLog:
       changes:
         - sqlFile:
             path: 003_test_devices.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-test-data-004-consumption
+      author: smarthome-team
+      comment: "[TEST-DATA] Inserta consumos de prueba"
+      context: test-data
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 004_test_consumption.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-test-data-005-notifications
+      author: smarthome-team
+      comment: "[TEST-DATA] Inserta notificaciones de prueba"
+      context: test-data
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 005_test_notifications.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-test-data-006-config
+      author: smarthome-team
+      comment: "[TEST-DATA] Inserta configuraciones de usuario de prueba"
+      context: test-data
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 006_test_config.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true

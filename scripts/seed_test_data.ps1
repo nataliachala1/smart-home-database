@@ -56,7 +56,7 @@ try {
     # --------------------------------------------------------
     Write-Host "Ejecutando migraciones con contexto 'test-data'..." -ForegroundColor Cyan
 
-    docker compose run --rm liquibase update --contexts=test-data
+    docker compose run --rm liquibase update --context-filter='test-data'
 
     if ($LASTEXITCODE -ne 0) {
         Write-Error "La carga de datos de prueba fallo. Revisa el log de Liquibase arriba."

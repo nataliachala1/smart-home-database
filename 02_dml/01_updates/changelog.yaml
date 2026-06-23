@@ -54,6 +54,7 @@ databaseChangeLog:
       id: dml-upd-003-config-usuario
       author: smarthome-team
       comment: "[REFERENCIA] Actualización de idioma, tema y preferencias de notificación"
+      context: reference
       runOnChange: true
       changes:
         - sqlFile:
