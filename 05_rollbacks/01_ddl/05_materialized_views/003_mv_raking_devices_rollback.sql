@@ -1,0 +1,1 @@
+DROP MATERIALIZED VIEW IF EXISTS consumption.mv_ranking_dispositivos CASCADE;

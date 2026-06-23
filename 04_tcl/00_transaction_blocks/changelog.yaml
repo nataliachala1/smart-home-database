@@ -1,0 +1,108 @@
+# ============================================================
+# CHANGELOG — 04_tcl/00_transaction_blocks
+# Archivo: 04_tcl/00_transaction_blocks/changelog.yaml
+# Descripción: Registra en Liquibase, con fines de control
+#              de versión y documentación, los 7 bloques
+#              transaccionales de negocio del sistema.
+#
+# ⚠️ IMPORTANTE: estos scripts usan marcadores parametrizados
+# (:id_user, :id_home, :id_device, etc.) y están diseñados
+# para ser invocados por el backend de la aplicación o
+# ejecutados manualmente por un DBA, NO para correr
+# automáticamente con cada `liquibase update`. Se marcan con
+# runOnChange para que Liquibase los versiones sin bloquear
+# el pipeline si cambian de contenido.
+#
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: tcl-tx-001-registro-usuario
+      author: smarthome-team
+      comment: "[REFERENCIA] Bloque transaccional de registro de usuario (RF1.1)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 001_tcl_registro_usuario.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-tx-002-registro-hogar
+      author: smarthome-team
+      comment: "[REFERENCIA] Bloque transaccional de registro de hogar (RF2.1)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 002_tcl_registro_hogar.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-tx-003-registro-dispositivo
+      author: smarthome-team
+      comment: "[REFERENCIA] Bloque transaccional de registro de dispositivo (RF3.1)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 003_tcl_registro_dispositivo.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-tx-004-desactivar-hogar
+      author: smarthome-team
+      comment: "[REFERENCIA] Bloque transaccional de desactivación de hogar (RF2.4)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 004_tcl_desactivar_hogar.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-tx-005-desactivar-dispositivo
+      author: smarthome-team
+      comment: "[REFERENCIA] Bloque transaccional de desactivación de dispositivo (RF3.4)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 005_tcl_desactivar_dispositivo.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-tx-006-restaurar-backup
+      author: smarthome-team
+      comment: "[REFERENCIA] Bloque transaccional de restauración de backup (RF5.3)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 006_tcl_restaurar_backup.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-tx-007-sincronizacion-offline
+      author: smarthome-team
+      comment: "[REFERENCIA] Bloque transaccional de sincronización de cola offline (RF5.4)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 007_tcl_sincronizacion_offline.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

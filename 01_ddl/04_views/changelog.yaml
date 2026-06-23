@@ -1,0 +1,69 @@
+# ============================================================
+# CHANGELOG — 01_ddl/04_views
+# Archivo: 01_ddl/04_views/changelog.yaml
+# Descripción: Lista los scripts SQL de creación de vistas
+#              normales para cada esquema del sistema.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: ddl-vw-001-auth
+      author: smarthome-team
+      comment: Vistas del esquema auth
+      changes:
+        - sqlFile:
+            path: 001_auth_views.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-vw-002-homes
+      author: smarthome-team
+      comment: Vistas del esquema homes
+      changes:
+        - sqlFile:
+            path: 002_homes_views.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-vw-003-devices
+      author: smarthome-team
+      comment: Vistas del esquema devices
+      changes:
+        - sqlFile:
+            path: 003_devices_views.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-vw-004-consumption
+      author: smarthome-team
+      comment: Vistas de los esquemas consumption y notifications
+      changes:
+        - sqlFile:
+            path: 004_consumption_views.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-vw-005-audit
+      author: smarthome-team
+      comment: Vistas del esquema audit
+      changes:
+        - sqlFile:
+            path: 005_audit_views.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

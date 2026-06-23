@@ -1,0 +1,43 @@
+# ============================================================
+# CHANGELOG — 02_dml/05_test_data
+# Archivo: 02_dml/05_test_data/changelog.yaml
+# Descripción: Lista los scripts SQL para datos de prueba
+#              utilizados en entornos de testing.
+#
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: dml-test-data-001-usuarios
+      author: smarthome-team
+      comment: "[TEST-DATA] Inserta usuarios de prueba"
+      context: test-data
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 001_test_users.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-test-data-002-dispositivos
+      author: smarthome-team
+      comment: "[TEST-DATA] Inserta dispositivos de prueba"
+      context: test-data
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 003_test_devices.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  
+  

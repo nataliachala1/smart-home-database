@@ -1,0 +1,37 @@
+# ============================================================
+# CHANGELOG — 01_ddl/00_extensions
+# Archivo: 01_ddl/00_extensions/changelog.yaml
+# Descripción: Lista los scripts SQL de instalación de
+#              extensiones PostgreSQL necesarias para el
+#              sistema Smart Home.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: ddl-ext-001-uuid
+      author: smarthome-team
+      comment: Instala la extensión uuid-ossp
+      changes:
+        - sqlFile:
+            path: 001_enable_uuid_extension.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-ext-002-pgcrypto
+      author: smarthome-team
+      comment: Instala la extensión pgcrypto
+      changes:
+        - sqlFile:
+            path: 002_enable_pgcrypto_extension.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

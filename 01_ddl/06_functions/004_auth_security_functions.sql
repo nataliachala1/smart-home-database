@@ -45,8 +45,8 @@ BEGIN
     IF NEW.intentos_fallidos >= v_max_intentos THEN
 
       -- Bloquear la cuenta automáticamente
-      NEW.estado          := 'bloqueado';
-      NEW.bloqueado_hasta := NOW() + v_tiempo_bloqueo;
+      NEW.estado          = 'bloqueado';
+      NEW.bloqueado_hasta = NOW() + v_tiempo_bloqueo;
 
     END IF;
 
@@ -59,8 +59,8 @@ BEGIN
   IF NEW.estado = 'activo'
     AND OLD.estado = 'bloqueado' THEN
 
-    NEW.intentos_fallidos := 0;
-    NEW.bloqueado_hasta   := NULL;
+    NEW.intentos_fallidos = 0;
+    NEW.bloqueado_hasta   = NULL;
 
   END IF;
 
@@ -162,7 +162,7 @@ BEGIN
       expira_en
     FROM auth.session
     WHERE id_user    = NEW.id_user
-      AND activa     = FALSE
+      AND activa     = TRUE
       AND deleted_at IS NULL
       AND token NOT IN (
         SELECT token FROM auth.token_blacklist
@@ -201,8 +201,8 @@ BEGIN
     -- Resetear intentos fallidos de MFA
     UPDATE auth.mfa
     SET
-      intentos_fallidos := 0,
-      updated_at        := NOW()
+      intentos_fallidos = 0,
+      updated_at        = NOW()
     WHERE id_user = (
       SELECT id_user
       FROM auth.recovery_token

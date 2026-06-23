@@ -25,8 +25,6 @@ CREATE OR REPLACE PROCEDURE sp_registrar_usuario(
   IN  p_username         VARCHAR(50),
   IN  p_email            VARCHAR(255),
   IN  p_password         TEXT,
-  IN  p_tipo_documento   VARCHAR(20),
-  IN  p_numero_documento VARCHAR(30),
   OUT p_id_user          UUID,
   OUT p_token            TEXT
 )
@@ -48,14 +46,12 @@ BEGIN
   --    defecto), fn_audit_log (registra creación)
   -- --------------------------------------------------------
   INSERT INTO auth.user (
-    id_user, nombre, apellido, username, email, password_hash,
-    tipo_documento, numero_documento, estado, email_verificado,
+    id_user, nombre, apellido, username, email, password_hash, estado, email_verificado,
     created_at, updated_at
   )
   VALUES (
     p_id_user, p_nombre, p_apellido, p_username, p_email,
     crypt(p_password, gen_salt('bf', 12)),
-    p_tipo_documento, p_numero_documento,
     'pendiente', FALSE,
     NOW(), NOW()
   );
@@ -79,15 +75,16 @@ BEGIN
 
 EXCEPTION
   WHEN unique_violation THEN
-    RAISE EXCEPTION 'El correo, username o documento ya están registrados en el sistema.';
+    RAISE EXCEPTION 'El correo, username ya están registrados en el sistema.';
   WHEN OTHERS THEN
     RAISE EXCEPTION 'Error al registrar el usuario: %', SQLERRM;
 END;
 $$;
 
-COMMENT ON PROCEDURE sp_registrar_usuario(VARCHAR, VARCHAR, VARCHAR, VARCHAR, TEXT, VARCHAR, VARCHAR, UUID, TEXT)
-  IS 'Registra un nuevo usuario, le asigna el rol estándar y genera su token de confirmación. La configuración por defecto y la auditoría se generan automáticamente vía triggers.';
-
+COMMENT ON PROCEDURE sp_registrar_usuario(
+  VARCHAR, VARCHAR, VARCHAR, VARCHAR, TEXT, UUID, TEXT
+)
+IS 'Registra usuario, asigna rol estándar y genera token de activación.';
 -- ============================================================
 -- EJEMPLO DE USO
 -- ============================================================

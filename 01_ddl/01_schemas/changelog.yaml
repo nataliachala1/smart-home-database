@@ -1,0 +1,60 @@
+# ============================================================
+# CHANGELOG — 01_ddl/01_schemas
+# Archivo: 01_ddl/01_schemas/changelog.yaml
+# Descripción: Lista los scripts SQL de creación de los
+#              8 esquemas del sistema Smart Home.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: ddl-sch-001-schemas
+      author: smarthome-team
+      comment: Crea los 8 esquemas del sistema Smart Home
+      changes:
+        - sqlFile:
+            path: 001_create_schemas.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+        - sqlFile:
+            path: 002_create_schemas.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+        - sqlFile:
+            path: 003_create_schemas.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+        - sqlFile:
+            path: 004_create_schemas.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+        - sqlFile:
+            path: 005_create_schemas.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+        - sqlFile:
+            path: 006_create_schemas.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+        - sqlFile:
+            path: 007_create_schemas.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+        - sqlFile:
+            path: 008_create_schemas.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

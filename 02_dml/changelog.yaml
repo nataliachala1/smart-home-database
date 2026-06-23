@@ -1,0 +1,54 @@
+# ============================================================
+# CHANGELOG — 02_dml (principal)
+# Archivo: 02_dml/changelog.yaml
+# Descripción: Incluye los changelogs de cada subcarpeta del
+#              DML: inserts (seed real) → updates → deletes →
+#              upserts → patches → test_data.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+#
+# Orden y razón:
+#   00_inserts    → seed real: roles, permisos, tipos de
+#                   dispositivo, usuario admin. Requerido
+#                   para que el sistema arranque.
+#   01_updates    → scripts de referencia parametrizados,
+#                   versionados pero no auto-ejecutados.
+#   02_deletes    → scripts de referencia parametrizados,
+#                   versionados pero no auto-ejecutados.
+#   03_upserts    → scripts de referencia parametrizados,
+#                   versionados pero no auto-ejecutados.
+#   04_patches    → jobs de mantenimiento idempotentes,
+#                   pueden ejecutarse recurrentemente.
+#   00_test_data  → SOLO con --contexts=test-data, nunca
+#                   en producción.
+# ============================================================
+
+databaseChangeLog:
+
+  - include:
+      file: 00_inserts/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 01_updates/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 02_deletes/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 03_upserts/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 04_patches/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 05_test_data/changelog.yaml
+      relativeToChangelogFile: true

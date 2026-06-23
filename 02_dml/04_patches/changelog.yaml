@@ -1,0 +1,72 @@
+# ============================================================
+# CHANGELOG — 02_dml/04_patches
+# Archivo: 02_dml/04_patches/changelog.yaml
+# Descripción: Lista los scripts SQL de mantenimiento
+#              programado (jobs): reseteo de intentos
+#              fallidos, invalidación de tokens expirados,
+#              purga de blacklist y marcado de recovery
+#              tokens expirados.
+#
+# Estos scripts SÍ pueden ejecutarse de forma recurrente
+# (cron / pg_cron / job del backend) sin riesgo, ya que son
+# idempotentes por diseño. Se registran con runOnChange para
+# que Liquibase los versiones sin bloquear su re-ejecución
+# fuera del flujo de deployment.
+#
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: dml-patch-001-reset-intentos-fallidos
+      author: smarthome-team
+      comment: "[JOB] Resetea intentos fallidos y desbloquea cuentas cuyo tiempo de bloqueo expiró"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 001_patch_reset_intentos_fallidos.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-patch-002-invalidar-tokens-expirados
+      author: smarthome-team
+      comment: "[JOB] Marca como inactivas las sesiones cuyo token ya expiró (RNF5.4)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 002_patch_invalidar_tokens_expirados.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-patch-003-purgar-blacklist
+      author: smarthome-team
+      comment: "[JOB] Elimina físicamente tokens revocados ya expirados"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 003_patch_purgar_blacklist.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-patch-004-recovery-tokens-expirados
+      author: smarthome-team
+      comment: "[JOB] Marca como usados los tokens de recuperación expirados sin usar"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 004_patch_recovery_tokens_expirados.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

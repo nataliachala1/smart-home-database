@@ -1,0 +1,31 @@
+# ============================================================
+# CHANGELOG — 03_dcl (principal)
+# Archivo: 03_dcl/changelog.yaml
+# Descripción: Incluye los changelogs de cada subcarpeta del
+#              DCL: roles → grants → policies.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+#
+# Orden y razón:
+#   00_roles    → deben existir antes de poder otorgarles privilegios
+#   01_grants   → requiere los roles creados
+#   02_policies → RLS aplica sobre roles ya con privilegios otorgados
+# ============================================================
+
+databaseChangeLog:
+
+  - include:
+      file: 00_roles/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 01_grants/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 02_policies/changelog.yaml
+      relativeToChangelogFile: true

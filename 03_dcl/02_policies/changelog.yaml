@@ -1,0 +1,70 @@
+# ============================================================
+# CHANGELOG — 03_dcl/02_policies
+# Archivo: 03_dcl/02_policies/changelog.yaml
+# Descripción: Lista los scripts SQL de políticas de Row
+#              Level Security (RLS) sobre las tablas críticas
+#              que requieren aislamiento de datos por usuario.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: dcl-rls-001-homes
+      author: smarthome-team
+      comment: Políticas RLS sobre homes.home y homes.area
+      changes:
+        - sqlFile:
+            path: 001_rls_homes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-rls-002-devices
+      author: smarthome-team
+      comment: Políticas RLS sobre devices.device
+      changes:
+        - sqlFile:
+            path: 002_rls_devices.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-rls-003-consumption
+      author: smarthome-team
+      comment: Políticas RLS sobre consumption.consumption, consumption_metric y recommendation
+      changes:
+        - sqlFile:
+            path: 003_rls_consumption.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-rls-004-notifications
+      author: smarthome-team
+      comment: Políticas RLS sobre notifications.notification
+      changes:
+        - sqlFile:
+            path: 004_rls_notifications.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-rls-005-config
+      author: smarthome-team
+      comment: Políticas RLS sobre config.configuration_user
+      changes:
+        - sqlFile:
+            path: 005_rls_config.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,78 @@
+# ============================================================
+# CHANGELOG — 01_ddl (principal)
+# Archivo: 01_ddl/changelog.yaml
+# Descripción: Incluye, en el orden correcto de dependencias,
+#              los changelogs de cada subcarpeta del DDL:
+#              extensiones → esquemas → tablas → vistas →
+#              vistas materializadas → funciones →
+#              procedimientos → triggers → índices.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+#
+# NOTA: 02_types no se incluye — carpeta sin uso por decisión
+# del equipo (se usan VARCHAR + CHECK en vez de ENUMs).
+#
+# Orden y razón:
+#   00_extensions  → requerido por uuid_generate_v4() y crypt()
+#   01_schemas     → contenedor de todas las tablas
+#   03_tables      → estructura base de datos
+#   04_views       → dependen de las tablas
+#   05_materialized_views → dependen de tablas (más pesadas)
+#   06_functions   → funciones reutilizadas por triggers
+#   07_procedures  → procedimientos invocados por el backend
+#   08_triggers    → DEBEN ir después de 06_functions
+#   09_indexes     → al final, sobre tablas y vistas ya creadas
+# ============================================================
+
+databaseChangeLog:
+
+  - include:
+      file: 00_extensions/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 01_schemas/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 03_tables/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 04_views/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 05_materialized_views/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 06_functions/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 07_procedures/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 08_triggers/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 09_indexes/changelog.yaml
+      relativeToChangelogFile: true
+
+  # ----------------------------------------------------------
+  # Release tag — marca el final de la capa DDL completa
+  # ----------------------------------------------------------
+  - changeSet:
+      id: ddl-000-tag-v1.0.0
+      author: smarthome-team
+      comment: Marca de versión v1.0.0 — estructura DDL completa
+      changes:
+        - tagDatabase:
+            tag: v1.0.0

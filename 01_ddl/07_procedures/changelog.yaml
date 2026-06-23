@@ -1,0 +1,82 @@
+# ============================================================
+# CHANGELOG — 01_ddl/07_procedures
+# Archivo: 01_ddl/07_procedures/changelog.yaml
+# Descripción: Lista los scripts SQL de creación de los
+#              procedimientos almacenados que orquestan
+#              flujos de negocio multi-paso invocados por
+#              el backend mediante CALL.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: ddl-proc-001-registrar-usuario
+      author: smarthome-team
+      comment: Procedimiento sp_registrar_usuario
+      changes:
+        - sqlFile:
+            path: 001_sp_registrar_usuario.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+
+  - changeSet:
+      id: ddl-proc-002-registrar-hogar
+      author: smarthome-team
+      comment: Procedimiento sp_registrar_hogar
+      changes:
+        - sqlFile:
+            path: 002_sp_registrar_hogar.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+
+  - changeSet:
+      id: ddl-proc-003-registrar-dispositivo
+      author: smarthome-team
+      comment: Procedimiento sp_registrar_dispositivo
+      changes:
+        - sqlFile:
+            path: 003_sp_registrar_dispositivo.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+
+  - changeSet:
+      id: ddl-proc-004-desactivar-hogar
+      author: smarthome-team
+      comment: Procedimiento sp_desactivar_hogar
+      changes:
+        - sqlFile:
+            path: 004_sp_desactivar_hogar.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+
+  - changeSet:
+      id: ddl-proc-005-desactivar-dispositivo
+      author: smarthome-team
+      comment: Procedimiento sp_desactivar_dispositivo
+      changes:
+        - sqlFile:
+            path: 005_sp_desactivar_dispositivo.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+
+  - changeSet:
+      id: ddl-proc-006-restaurar-backup
+      author: smarthome-team
+      comment: Procedimiento sp_restaurar_backup
+      changes:
+        - sqlFile:
+            path: 006_sp_restaurar_backup.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true

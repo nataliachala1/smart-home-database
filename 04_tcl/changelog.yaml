@@ -1,0 +1,34 @@
+# ============================================================
+# CHANGELOG — 04_tcl (principal)
+# Archivo: 04_tcl/changelog.yaml
+# Descripción: Incluye los changelogs de cada subcarpeta del
+#              TCL: transaction_blocks → manual_recoveries →
+#              release_tags.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+#
+# NOTA: a diferencia de 01_ddl, 02_dml y 03_dcl, las dos
+# primeras subcarpetas aquí (00_transaction_blocks y
+# 01_manual_recoveries) contienen scripts PARAMETRIZADOS de
+# uso manual/backend, no migraciones estructurales. Se
+# versionan con runOnChange únicamente para trazabilidad,
+# no para ejecución automática en cada deploy.
+# ============================================================
+
+databaseChangeLog:
+
+  - include:
+      file: 00_transaction_blocks/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 01_manual_recoveries/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: 02_release_tags/changelog.yaml
+      relativeToChangelogFile: true

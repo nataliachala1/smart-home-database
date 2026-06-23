@@ -1,0 +1,60 @@
+# ============================================================
+# CHANGELOG — 01_ddl/06_functions
+# Archivo: 01_ddl/06_functions/changelog.yaml
+# Descripción: Lista los scripts SQL de creación de las
+#              funciones reutilizables del sistema (trigger
+#              functions de updated_at, auditoría,
+#              configuración de usuario y seguridad).
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: ddl-fn-001-updated-at
+      author: smarthome-team
+      comment: Función genérica fn_updated_at
+      changes:
+        - sqlFile:
+            path: 001_update_functions.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+
+  - changeSet:
+      id: ddl-fn-002-audit-log
+      author: smarthome-team
+      comment: Función genérica fn_audit_log
+      changes:
+        - sqlFile:
+            path: 002_audit_log_functions.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+
+  - changeSet:
+      id: ddl-fn-003-config-user
+      author: smarthome-team
+      comment: Función fn_config_user
+      changes:
+        - sqlFile:
+            path: 003_config_user_functions.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true
+
+  - changeSet:
+      id: ddl-fn-004-auth-security
+      author: smarthome-team
+      comment: Funciones de seguridad de autenticación (intentos fallidos, cambio de password, reset MFA)
+      changes:
+        - sqlFile:
+            path: 004_auth_security_functions.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: true

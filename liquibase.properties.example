@@ -1,0 +1,6 @@
+# Requires a local Liquibase installation with the PostgreSQL JDBC driver available.
+changeLogFile=changelog-master.yaml
+url=jdbc:postgresql://localhost:5433/smart-home
+username=Usuario
+password=User123.
+driver=org.postgresql.Driver

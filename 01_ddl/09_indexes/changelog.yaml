@@ -1,0 +1,105 @@
+# ============================================================
+# CHANGELOG — 01_ddl/09_indexes
+# Archivo: 01_ddl/09_indexes/changelog.yaml
+# Descripción: Lista los scripts SQL de índices adicionales
+#              de búsqueda, organizados un changeSet por
+#              esquema. Se ejecuta al final del DDL porque
+#              algunos índices benefician de que las tablas
+#              y vistas ya existan.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: ddl-idx-001-auth
+      author: smarthome-team
+      comment: Índices adicionales del esquema auth
+      changes:
+        - sqlFile:
+            path: 001_auth_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-idx-002-homes
+      author: smarthome-team
+      comment: Índices adicionales del esquema homes
+      changes:
+        - sqlFile:
+            path: 002_homes_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-idx-003-devices
+      author: smarthome-team
+      comment: Índices adicionales del esquema devices
+      changes:
+        - sqlFile:
+            path: 003_devices_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-idx-004-consumption
+      author: smarthome-team
+      comment: Índices adicionales del esquema consumption
+      changes:
+        - sqlFile:
+            path: 004_consumption_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-idx-005-notifications
+      author: smarthome-team
+      comment: Índices adicionales del esquema notifications
+      changes:
+        - sqlFile:
+            path: 005_notifications_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-idx-006-sync
+      author: smarthome-team
+      comment: Índices adicionales del esquema sync
+      changes:
+        - sqlFile:
+            path: 006_sync_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-idx-007-config
+      author: smarthome-team
+      comment: Índices adicionales del esquema config
+      changes:
+        - sqlFile:
+            path: 007_config_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-idx-008-audit
+      author: smarthome-team
+      comment: Índices adicionales del esquema audit
+      changes:
+        - sqlFile:
+            path: 008_audit_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

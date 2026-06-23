@@ -1,0 +1,1 @@
+DROP FUNCTION IF EXISTS fn_updated_at() CASCADE;

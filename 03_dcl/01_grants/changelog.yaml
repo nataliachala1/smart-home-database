@@ -1,0 +1,103 @@
+# ============================================================
+# CHANGELOG — 03_dcl/01_grants
+# Archivo: 03_dcl/01_grants/changelog.yaml
+# Descripción: Lista los scripts SQL de privilegios otorgados
+#              sobre cada esquema a los roles smarthome_admin,
+#              smarthome_app y smarthome_readonly.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: dcl-grants-001-auth
+      author: smarthome-team
+      comment: Grants sobre el esquema auth
+      changes:
+        - sqlFile:
+            path: 001_grants_auth.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-grants-002-homes
+      author: smarthome-team
+      comment: Grants sobre el esquema homes
+      changes:
+        - sqlFile:
+            path: 002_grants_homes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-grants-003-devices
+      author: smarthome-team
+      comment: Grants sobre el esquema devices
+      changes:
+        - sqlFile:
+            path: 003_grants_devices.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-grants-004-consumption
+      author: smarthome-team
+      comment: Grants sobre el esquema consumption
+      changes:
+        - sqlFile:
+            path: 004_grants_consumption.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-grants-005-notifications
+      author: smarthome-team
+      comment: Grants sobre el esquema notifications
+      changes:
+        - sqlFile:
+            path: 005_grants_notifications.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-grants-006-sync
+      author: smarthome-team
+      comment: Grants sobre el esquema sync
+      changes:
+        - sqlFile:
+            path: 006_grants_sync.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-grants-007-config
+      author: smarthome-team
+      comment: Grants sobre el esquema config
+      changes:
+        - sqlFile:
+            path: 007_grants_config.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dcl-grants-008-audit
+      author: smarthome-team
+      comment: Grants sobre el esquema audit (sin UPDATE/DELETE para smarthome_app)
+      changes:
+        - sqlFile:
+            path: 008_grants_audit.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

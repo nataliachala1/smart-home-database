@@ -1,0 +1,60 @@
+# ============================================================
+# CHANGELOG — 01_ddl/08_triggers
+# Archivo: 01_ddl/08_triggers/changelog.yaml
+# Descripción: Lista los scripts SQL de creación de los
+#              triggers que invocan las funciones definidas
+#              en 06_functions. Debe ejecutarse después de
+#              06_functions y antes de cualquier dato (02_dml).
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: ddl-trg-001-updated-at
+      author: smarthome-team
+      comment: Triggers que invocan fn_updated_at en todas las tablas con ese campo
+      changes:
+        - sqlFile:
+            path: 001_update_triggers.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-trg-002-audit-log
+      author: smarthome-team
+      comment: Triggers que invocan fn_audit_log sobre tablas críticas
+      changes:
+        - sqlFile:
+            path: 002_audit_log_triggers.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-trg-003-config-user
+      author: smarthome-team
+      comment: Trigger que invoca fn_config_user al crear un usuario
+      changes:
+        - sqlFile:
+            path: 003_config_user_triggers.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-trg-004-auth-security
+      author: smarthome-team
+      comment: Triggers de seguridad de autenticación
+      changes:
+        - sqlFile:
+            path: 004_auth_security_triggers.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,89 @@
+# ============================================================
+# CHANGELOG — 02_dml/00_inserts
+# Archivo: 02_dml/00_inserts/changelog.yaml
+# Descripción: Incluye los scripts SQL de inserción de datos
+#              iniciales (seed data) necesarios para que el
+#              sistema Smart Home arranque correctamente.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+#
+# Orden y razón:
+#   001_insert_roles              → Roles base del sistema
+#   002_insert_permissions        → Permisos por rol
+#   003_insert_roles_permissions  → Asociación rol-permiso
+#   004_insert_tipos_dispositivos → Catálogo de dispositivos
+#   005_insert_admin_user         → Usuario administrador inicial
+#   006_insert_auditoria_seed     → Evento de auditoría inicial
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: dml-insert-001-roles
+      author: smarthome-team
+      comment: Inserta los roles iniciales del sistema
+      changes:
+        - sqlFile:
+            path: 001_insert_roles.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-insert-002-permissions
+      author: smarthome-team
+      comment: Inserta los permisos iniciales del sistema
+      changes:
+        - sqlFile:
+            path: 002_insert_permissions.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-insert-003-roles-permissions
+      author: smarthome-team
+      comment: Asocia roles con permisos
+      changes:
+        - sqlFile:
+            path: 003_insert_roles_permissions.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-insert-004-device-types
+      author: smarthome-team
+      comment: Inserta los tipos de dispositivos disponibles
+      changes:
+        - sqlFile:
+            path: 004_insert_tipos_dispositivos.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-insert-005-admin-user
+      author: smarthome-team
+      comment: Crea el usuario administrador inicial
+      changes:
+        - sqlFile:
+            path: 005_insert_admin_user.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-insert-006-audit-seed
+      author: smarthome-team
+      comment: Registra evento de auditoría del seed inicial
+      changes:
+        - sqlFile:
+            path: 006_insert_auditoria_seed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

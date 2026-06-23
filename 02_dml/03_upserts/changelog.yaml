@@ -1,0 +1,17 @@
+# ============================================================
+# CHANGELOG — 02_dml/03_upserts
+# Archivo: 02_dml/03_upserts/changelog.yaml
+# Descripción: Incluye los scripts SQL de operaciones UPSERT
+#              para sincronización y merging de datos.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+#
+# Nota: Carpeta reservada para operaciones UPSERT (INSERT OR UPDATE).
+#       Archivos de referencia, no auto-ejecutados.
+# ============================================================
+
+databaseChangeLog: []

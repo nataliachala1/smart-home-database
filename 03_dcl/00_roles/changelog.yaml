@@ -1,0 +1,25 @@
+# ============================================================
+# CHANGELOG — 03_dcl/00_roles
+# Archivo: 03_dcl/00_roles/changelog.yaml
+# Descripción: Lista el script SQL de creación de los roles
+#              de PostgreSQL del sistema Smart Home.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: dcl-roles-001-create-roles
+      author: smarthome-team
+      comment: Crea los roles smarthome_admin, smarthome_app y smarthome_readonly
+      changes:
+        - sqlFile:
+            path: 001_create_roles.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

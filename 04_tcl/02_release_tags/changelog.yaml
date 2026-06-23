@@ -1,0 +1,43 @@
+# ============================================================
+# CHANGELOG — 04_tcl/02_release_tags
+# Archivo: 04_tcl/02_release_tags/changelog.yaml
+# Descripción: Registra los scripts informativos de release
+#              tags del proyecto Smart Home. Los tags reales
+#              de Liquibase (tagDatabase) ya se aplican en los
+#              changelogs de 01_ddl (v1.0.0) y 02_dml/00_inserts
+#              (v1.0.1). Estos scripts SQL documentan el
+#              contenido de cada versión dentro de
+#              audit.audit_log, pero no repiten el tagDatabase
+#              para evitar tags duplicados en el historial
+#              de Liquibase.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: tcl-tag-001-v1.0.0-initial
+      author: smarthome-team
+      comment: "Registro informativo en auditoría del contenido de la versión v1.0.0 (estructura DDL completa)"
+      changes:
+        - sqlFile:
+            path: 001_tag_v1_0_0_initial.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-tag-002-v1.0.1-seed
+      author: smarthome-team
+      comment: "Registro informativo en auditoría del contenido de la versión v1.0.1 (datos semilla)"
+      changes:
+        - sqlFile:
+            path: 002_tag_v1_0_1_seed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

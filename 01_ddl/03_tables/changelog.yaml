@@ -1,0 +1,103 @@
+# ============================================================
+# CHANGELOG — 01_ddl/03_tables
+# Archivo: 01_ddl/03_tables/changelog.yaml
+# Descripción: Lista los scripts SQL de creación de las
+#              32 tablas del sistema Smart Home, organizados
+#              en un changeSet por esquema.
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: ddl-tab-001-auth
+      author: smarthome-team
+      comment: Crea las 9 tablas del esquema auth
+      changes:
+        - sqlFile:
+            path: 001_create_auth_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-tab-002-config
+      author: smarthome-team
+      comment: Crea la tabla del esquema config
+      changes:
+        - sqlFile:
+            path: 007_create_config_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-tab-003-homes
+      author: smarthome-team
+      comment: Crea las 4 tablas del esquema homes
+      changes:
+        - sqlFile:
+            path: 002_create_homes_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-tab-004-devices
+      author: smarthome-team
+      comment: Crea las 8 tablas del esquema devices
+      changes:
+        - sqlFile:
+            path: 003_create_devices_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-tab-005-consumption
+      author: smarthome-team
+      comment: Crea las 3 tablas del esquema consumption
+      changes:
+        - sqlFile:
+            path: 004_create_consumption_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-tab-006-notifications
+      author: smarthome-team
+      comment: Crea las 3 tablas del esquema notifications
+      changes:
+        - sqlFile:
+            path: 005_create_notifications_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-tab-007-sync
+      author: smarthome-team
+      comment: Crea las 3 tablas del esquema sync
+      changes:
+        - sqlFile:
+            path: 006_create_sync_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-tab-008-audit
+      author: smarthome-team
+      comment: Crea la tabla del esquema audit
+      changes:
+        - sqlFile:
+            path: 008_create_audit_tables.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

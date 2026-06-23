@@ -5,7 +5,7 @@
 --              tablas del esquema audit. Garantiza que la
 --              consulta de hasta 10.000 registros no supere
 --              los 5 segundos (RF7.1).
-==========================================================
+-- ==========================================================
 
 -- ============================================================
 -- TABLA: audit.audit_log

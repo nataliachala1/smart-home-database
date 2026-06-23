@@ -1,0 +1,113 @@
+version: "3.9"
+
+# ============================================================
+# DOCKER COMPOSE — Smart Home Database
+# Proyecto: Smart Home — Sistema inteligente de monitoreo
+#           y control de consumo de energía eléctrica
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+#
+# Servicios:
+#   - postgres:  Motor de base de datos PostgreSQL 15
+#   - liquibase: Ejecuta las migraciones definidas en
+#                changelog-master.yaml contra postgres
+#
+# Uso:
+#   1. Copiar .env.example a .env y completar las variables
+#   2. docker compose up -d postgres   (levanta solo la BD)
+#   3. docker compose run --rm liquibase update  (aplica migraciones)
+# ============================================================
+
+services:
+
+  # ----------------------------------------------------------
+  # PostgreSQL — Motor de base de datos
+  # ----------------------------------------------------------
+  postgres:
+    image: postgres:15
+    container_name: smarthome_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-smarthome}
+      POSTGRES_USER: ${POSTGRES_USER:-smarthome_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: America/Bogota
+      PGTZ: America/Bogota
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - smarthome_pgdata:/var/lib/postgresql/data
+      # Scripts de inicialización pura de Docker (NO Liquibase).
+      # Solo se ejecutan la primera vez que se crea el volumen,
+      # útil para CREATE EXTENSION si se requiere antes que
+      # Liquibase tome el control.
+      - ./docker/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-smarthome_admin} -d ${POSTGRES_DB:-smarthome}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - smarthome_network
+
+  # ----------------------------------------------------------
+  # Liquibase — Control de versiones de la base de datos
+  # ----------------------------------------------------------
+  liquibase:
+    build:
+      context: ./docker/liquibase
+      dockerfile: Dockerfile
+    container_name: smarthome_liquibase
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      LIQUIBASE_COMMAND_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-smarthome}
+      LIQUIBASE_COMMAND_USERNAME: ${POSTGRES_USER:-smarthome_admin}
+      LIQUIBASE_COMMAND_PASSWORD: ${POSTGRES_PASSWORD}
+      LIQUIBASE_COMMAND_CHANGELOG_FILE: changelog-master.yaml
+      LIQUIBASE_CLASSPATH: /liquibase/liquibase_libs/postgresql-42.7.8.jar
+    volumes:
+      - ./:/liquibase/changelog:ro
+    working_dir: /liquibase/changelog
+    networks:
+      - smarthome_network
+    # No se ejecuta automáticamente al hacer "docker compose up";
+    # se invoca explícitamente con:
+    #   docker compose run --rm liquibase update
+    #   docker compose run --rm liquibase status
+    #   docker compose run --rm liquibase rollback <tag>
+    entrypoint: ["liquibase"]
+    command: ["--help"]
+
+  # ----------------------------------------------------------
+  # pg_cron (OPCIONAL) — Programación de refresco de vistas
+  # materializadas directamente desde PostgreSQL.
+  #
+  # La imagen oficial 'postgres:15' NO incluye pg_cron.
+  # Si se decide activar esta opción (en vez del plan B de
+  # refrescar desde un backend externo), reemplazar la imagen
+  # del servicio 'postgres' arriba por una que incluya la
+  # extensión, por ejemplo:
+  #
+  #   image: citusdata/postgres:15-alpine  (incluye pg_cron)
+  #
+  # y descomentar en docker/initdb o en los scripts de DDL:
+  #
+  #   CREATE EXTENSION IF NOT EXISTS pg_cron;
+  #
+  # Ver documentación completa en:
+  #   01_ddl/05_materialized_views/*.sql (sección "OPCIÓN A")
+  # ----------------------------------------------------------
+
+networks:
+  smarthome_network:
+    driver: bridge
+
+volumes:
+  smarthome_pgdata:
+    driver: local

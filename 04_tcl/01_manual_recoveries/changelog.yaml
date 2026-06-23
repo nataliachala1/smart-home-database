@@ -1,0 +1,69 @@
+# ============================================================
+# CHANGELOG — 04_tcl/01_manual_recoveries
+# Archivo: 04_tcl/01_manual_recoveries/changelog.yaml
+# Descripción: Registra en Liquibase, con fines de control
+#              de versión y documentación, los 4 scripts de
+#              recuperación manual ante estados inconsistentes.
+#
+# ⚠️ IMPORTANTE: scripts parametrizados de uso exclusivo del
+# administrador/DBA cuando se necesiten — NUNCA se ejecutan
+# automáticamente en un deployment. Se versionan con
+# runOnChange únicamente para trazabilidad.
+#
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: tcl-rec-001-usuario-bloqueado
+      author: smarthome-team
+      comment: "[REFERENCIA] Recuperación manual de usuario bloqueado (RF1.6)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 001_recovery_usuario_bloqueado.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-rec-002-hogar-desactivado
+      author: smarthome-team
+      comment: "[REFERENCIA] Recuperación manual de hogar desactivado por error (RF2.4)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 002_recovery_hogar_desactivado.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-rec-003-dispositivo-desactivado
+      author: smarthome-team
+      comment: "[REFERENCIA] Recuperación manual de dispositivo desactivado por error (RF3.4)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 003_recovery_dispositivo_desactivado.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: tcl-rec-004-restauracion-fallida
+      author: smarthome-team
+      comment: "[REFERENCIA] Recuperación manual ante restauración de backup fallida (RF5.3)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 004_recovery_restauracion_fallida.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

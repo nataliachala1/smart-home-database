@@ -1,0 +1,59 @@
+# ============================================================
+# CHANGELOG — 01_ddl/05_materialized_views
+# Archivo: 01_ddl/05_materialized_views/changelog.yaml
+# Descripción: Lista los scripts SQL de creación de las
+#              4 vistas materializadas usadas para reportes
+#              e históricos (no para tiempo real).
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: ddl-mv-001-resumen-diario
+      author: smarthome-team
+      comment: Vista materializada de resumen diario de consumo por hogar
+      changes:
+        - sqlFile:
+            path: 001_mv_resumen_diario_homes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-mv-002-resumen-mensual
+      author: smarthome-team
+      comment: Vista materializada de resumen mensual de consumo por hogar
+      changes:
+        - sqlFile:
+            path: 002_mv_resumen_mensual_homes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-mv-003-ranking-dispositivos
+      author: smarthome-team
+      comment: Vista materializada de ranking de dispositivos por consumo
+      changes:
+        - sqlFile:
+            path: 003_mv_raking_devices.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: ddl-mv-004-estadisticas-audit
+      author: smarthome-team
+      comment: Vista materializada de estadísticas mensuales de auditoría
+      changes:
+        - sqlFile:
+            path: 004_mv_estadisticas_mensuales_audit.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

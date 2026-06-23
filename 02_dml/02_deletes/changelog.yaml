@@ -1,0 +1,62 @@
+
+# ============================================================
+# CHANGELOG — 02_dml/02_deletes
+# Archivo: 02_dml/02_deletes/changelog.yaml
+# Descripción: Lista los scripts SQL de referencia para
+#              eliminación lógica (soft delete) de usuario,
+#              hogar y dispositivo.
+#
+# ⚠️ IMPORTANTE: scripts PARAMETRIZADOS de referencia (usan
+# marcadores como :id_usuario, :id_hogar). No se ejecutan
+# tal cual en un deployment normal — se versionan aquí con
+# runOnChange para que el equipo los tenga documentados y
+# Liquibase lleve su historial, pero la ejecución real la
+# dispara el backend o el administrador cuando corresponde.
+#
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: dml-del-001-soft-delete-usuario
+      author: smarthome-team
+      comment: "[REFERENCIA] Eliminación lógica de usuario (RF1.5)"
+      context: reference
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 001_soft_delete_usuario.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-del-002-soft-delete-hogar
+      author: smarthome-team
+      comment: "[REFERENCIA] Eliminación lógica de hogar y sus zonas (RF2.4)"
+      context: reference
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 002_soft_delete_hogar.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-del-003-soft-delete-dispositivo
+      author: smarthome-team
+      comment: "[REFERENCIA] Eliminación lógica de dispositivo, horarios y umbrales (RF3.4)"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 003_soft_delete_dispositivo.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

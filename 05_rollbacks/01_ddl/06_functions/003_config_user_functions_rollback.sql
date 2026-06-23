@@ -1,0 +1,1 @@
+DROP FUNCTION IF EXISTS fn_config_user() CASCADE;

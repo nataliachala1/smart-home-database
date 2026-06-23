@@ -1,0 +1,63 @@
+# ============================================================
+# CHANGELOG — 02_dml/01_updates
+# Archivo: 02_dml/01_updates/changelog.yaml
+# Descripción: Lista los scripts SQL de actualización de
+#              referencia para flujos de negocio: cambio de
+#              contraseña del admin, gestión de estado de
+#              usuario y actualización de configuración.
+#
+# ⚠️ IMPORTANTE: estos son scripts PARAMETRIZADOS de
+# referencia (usan marcadores como :email_usuario,
+# :nuevo_idioma). No se ejecutan tal cual con `liquibase
+# update` en un deployment normal — están documentados aquí
+# como changeSets de tipo runOnChange para que Liquibase los
+# registre y versiones sin obligar su ejecución automática
+# con cada deploy.
+#
+# Autor: Karen Daniela Holguín Cruz, Natalia Chala Chala,
+#        Kevin Stiven López Amaya
+# Institución: SENA — Análisis y Desarrollo de Software
+# Ficha: 3145555
+# Versión: 1.0.0
+# Fecha: 2025
+# ============================================================
+
+databaseChangeLog:
+
+  - changeSet:
+      id: dml-upd-001-admin-password
+      author: smarthome-team
+      comment: "[REFERENCIA] Actualización de contraseña del administrador por defecto"
+      context: reference
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 001_update_admin_password.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-upd-002-estado-usuario
+      author: smarthome-team
+      comment: "[REFERENCIA] Activar, desactivar, bloquear y desbloquear cuentas de usuario"
+      context: reference
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 002_update_estado_usuario.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+
+  - changeSet:
+      id: dml-upd-003-config-usuario
+      author: smarthome-team
+      comment: "[REFERENCIA] Actualización de idioma, tema y preferencias de notificación"
+      runOnChange: true
+      changes:
+        - sqlFile:
+            path: 003_update_config_usuario.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
